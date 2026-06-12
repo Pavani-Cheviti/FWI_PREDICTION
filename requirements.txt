@@ -1,0 +1,10 @@
+# Requirements for Tempest: Fire Weather Index (FWI) Predictor
+
+flask
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+joblib
+pickle-mixin

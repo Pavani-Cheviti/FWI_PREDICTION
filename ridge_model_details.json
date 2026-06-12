@@ -1,0 +1,11 @@
+{
+    "Model Name": "Ridge Regression",
+    "Alpha Value": 10,
+    "Train R\u00b2": 0.9627798656933819,
+    "Validation R\u00b2": 0.9597204516990787,
+    "Train RMSE": 1.4474212620325024,
+    "Validation RMSE": 1.217497761146998,
+    "Data Split": "80% Train - 20% Test",
+    "Scaler Used": "StandardScaler",
+    "Random State": 42
+}
