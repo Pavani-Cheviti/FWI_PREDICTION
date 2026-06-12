@@ -1,0 +1,450 @@
+/* Background and glass styling */
+/* Background and glass styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    background: transparent; /* let .background show through */
+}
+
+.background {
+    background-image: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZzluamFrdXFicmllcmJnaWRkcmw2MHhvc3g0eGt4cGVmb3V3dXIxdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26hisrjJbrNNUKdcQ/giphy.gif');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    opacity: 0.95;
+}
+
+/* Additional background elements */
+.background::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif') center center no-repeat;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.2;
+    mix-blend-mode: screen;
+    filter: hue-rotate(15deg);
+}
+
+.background::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 40vh;
+    background: linear-gradient(
+        to top,
+        rgba(255, 69, 0, 0.1) 0%,
+        transparent 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Risk level backgrounds using your provided local images */
+body[data-risk="default"] .background {
+    background-image: url('/static/backgrounds/default.jpg');
+}
+
+body[data-risk="low"] .background {
+    background-image: url('/static/images/low.gif.png'); /* calm forest */
+}
+
+body[data-risk="moderate"] .background {
+    background-image: url('/static/images/moderate.gif.png'); /* light fire */
+}
+
+body[data-risk="high"] .background {
+    background-image: url('/static/images/high.gif.png'); /* intense fire */
+}
+
+body[data-risk="extreme"] .background {
+    background-image: url('/static/images/extreme.gif.png'); /* reuse or add extreme gif */
+}
+
+.background {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    opacity: 0.95;
+    transition: background-image 0.8s ease-in-out;
+}
+
+/* Subtle overlay to make foreground text readable */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.6)
+    );
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+        radial-gradient(circle at bottom, rgba(255, 69, 0, 0.1), transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.95;
+}
+
+/* Floating particles effect */
+.overlay::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at center, rgba(255, 165, 0, 0.1) 0%, transparent 2%),
+        radial-gradient(circle at center, rgba(255, 69, 0, 0.1) 0%, transparent 1%);
+    background-size: 120px 120px, 60px 60px;
+    animation: floatParticles 60s linear infinite;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes floatParticles {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 120px 120px, 60px 60px; }
+}
+
+@keyframes overlayPulse {
+    0% { background-color: rgba(0, 0, 0, 0.6); }
+    50% { background-color: rgba(0, 0, 0, 0.5); }
+    100% { background-color: rgba(0, 0, 0, 0.6); }
+}
+
+.predictor-container {
+    max-width: 800px;
+}
+
+/* Ensure content sits above overlay/background */
+.container-fluid, .row, .predictor-container, .glass-card, .result-card, .sidebar-info {
+    position: relative;
+    z-index: 2;
+}
+
+/* Fix sidebar persistence */
+.col-md-3 {
+    position: relative;
+    z-index: 3;
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 165, 0, 0.3);
+    box-shadow: 0 0 40px rgba(255, 165, 0, 0.2);
+    padding: 30px;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 50px rgba(255, 165, 0, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 165, 0, 0.3);
+    color: #fff;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 165, 0, 0.6);
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
+    color: #fff;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-text {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-fire {
+    background: linear-gradient(45deg, #ff4d00, #ff9100);
+    border: none;
+    animation: glow 2s infinite;
+    color: white;
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-fire:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 100, 0, 0.4);
+    background: linear-gradient(45deg, #ff9100, #ff4d00);
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 20px rgba(255, 100, 0, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(255, 100, 0, 0.5); }
+    100% { box-shadow: 0 0 20px rgba(255, 100, 0, 0.3); }
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, #ff4d00, #ff9100);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 0 2px 10px rgba(255, 100, 0, 0.3);
+    margin-bottom: 2rem;
+}
+
+/* Fire-like info panels displayed side-by-side when space permits */
+.info-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.fire-panel {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255,165,0,0.25);
+    border-radius: 14px;
+    padding: 16px;
+    color: #fff;
+    box-shadow: 0 6px 24px rgba(255,120,0,0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 4;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Input page panels */
+body:not([data-risk]) .fire-panel {
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255,165,0,0.15);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.fire-panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(255,120,0,0.12);
+}
+
+.fire-panel h5 { 
+    margin-top: 0; 
+    margin-bottom: 6px;
+    color: rgba(255,165,0,0.9);
+}
+
+/* Sidebar specific styles */
+.sidebar-info {
+    padding: 15px;
+    height: 100%;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+/* Different colored panels for sidebar */
+.fire-panel.panel-primary {
+    background: linear-gradient(180deg, rgba(255,140,0,0.15), rgba(0,0,0,0.2));
+}
+
+.fire-panel.panel-secondary {
+    background: linear-gradient(180deg, rgba(255,100,0,0.12), rgba(0,0,0,0.2));
+}
+
+.fire-panel.panel-tertiary {
+    background: linear-gradient(180deg, rgba(255,80,0,0.1), rgba(0,0,0,0.2));
+}
+
+.fire-panel.panel-quaternary {
+    background: linear-gradient(180deg, rgba(255,60,0,0.08), rgba(0,0,0,0.2));
+}
+
+/* Risk levels styling */
+.fire-icon {
+    font-size: 2.2rem;
+    margin-right: 0.5rem;
+    animation: flicker 3s infinite;
+    text-shadow: 0 0 20px rgba(255, 69, 0, 0.7);
+    display: inline-block;
+    transform-origin: center;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; transform: scale(1.1); text-shadow: 0 0 20px rgba(255, 69, 0, 0.7); }
+    25% { opacity: 0.95; transform: scale(1); text-shadow: 0 0 15px rgba(255, 69, 0, 0.5); }
+    50% { opacity: 0.9; transform: scale(1.05); text-shadow: 0 0 25px rgba(255, 69, 0, 0.6); }
+    75% { opacity: 0.95; transform: scale(1); text-shadow: 0 0 15px rgba(255, 69, 0, 0.5); }
+}
+
+.risk-levels {
+    font-size: 0.9rem;
+}
+
+.risk-level {
+    margin: 8px 0;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.risk-level:hover {
+    transform: translateX(5px);
+}
+
+.risk-level span {
+    display: inline-block;
+    font-weight: 600;
+    margin-right: 8px;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Risk-based sphere colors */
+.risk-gauge {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.risk-gauge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.risk-low {
+    border: 2px solid rgba(60,180,75,0.5);
+}
+.risk-low::before {
+    background: radial-gradient(circle at center, rgba(60,180,75,0.2), transparent);
+}
+
+.risk-moderate {
+    border: 2px solid rgba(255,200,0,0.5);
+}
+.risk-moderate::before {
+    background: radial-gradient(circle at center, rgba(255,200,0,0.2), transparent);
+}
+
+.risk-high {
+    border: 2px solid rgba(255,120,0,0.5);
+}
+.risk-high::before {
+    background: radial-gradient(circle at center, rgba(255,120,0,0.2), transparent);
+}
+
+.risk-extreme {
+    border: 2px solid rgba(255,60,0,0.5);
+}
+.risk-extreme::before {
+    background: radial-gradient(circle at center, rgba(255,60,0,0.2), transparent);
+}
+
+.risk-level.low span {
+    background: rgba(60,180,75,0.25);
+}
+
+.risk-level.moderate span {
+    background: rgba(255,200,0,0.25);
+}
+
+.risk-level.high span {
+    background: rgba(255,120,0,0.25);
+}
+
+.risk-level.extreme span {
+    background: rgba(255,60,0,0.25);
+}
+
+/* Result card color accents per risk (also controlled by body[data-risk]) */
+.result-card {
+    background: rgba(0,0,0,0.45);
+    border-radius: 18px;
+    padding: 20px;
+    border: 2px solid rgba(255,165,0,0.15);
+}
+
+body[data-risk="low"] .result-card { border-color: rgba(60,180,75,0.35); box-shadow: 0 8px 40px rgba(60,180,75,0.07); }
+body[data-risk="moderate"] .result-card { border-color: rgba(255,200,0,0.28); box-shadow: 0 8px 40px rgba(255,165,0,0.08); }
+body[data-risk="high"] .result-card { border-color: rgba(255,120,0,0.35); box-shadow: 0 8px 40px rgba(255,100,0,0.12); }
+body[data-risk="extreme"] .result-card { border-color: rgba(255,60,0,0.45); box-shadow: 0 8px 60px rgba(255,80,0,0.18); }
+
+/* Risk gauge styles */
+.risk-gauge { display:inline-block; background: rgba(0,0,0,0.25); padding: 24px; border-radius: 50%; width:160px; height:160px; line-height:112px; text-align:center; }
+.risk-gauge span { display:block; font-size: 2.6rem; font-weight:700; }
+.risk-low { box-shadow: 0 0 30px rgba(60,180,75,0.25); }
+.risk-moderate { box-shadow: 0 0 30px rgba(255,200,0,0.25); }
+.risk-high { box-shadow: 0 0 30px rgba(255,120,0,0.4); }
+.risk-extreme { box-shadow: 0 0 40px rgba(255,60,0,0.6); }
+
+

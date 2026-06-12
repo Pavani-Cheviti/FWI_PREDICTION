@@ -1,0 +1,34 @@
+
+👉 On GitHub, GitLab, or VS Code Markdown Preview, this will show a **beautiful flowchart** — no design work needed.
+
+### 🔹 Why You’d Use It  
+- Lightweight and version-control friendly  
+- Great for documentation inside your README.md  
+- No external images needed  
+
+---
+
+## 🆚 Difference at a Glance
+
+| Feature | **Draw.io** | **Mermaid** |
+|----------|-------------|--------------|
+| Type | Visual (drag-and-drop) | Text-based (code) |
+| Output | .png / .drawio / .pdf | Markdown-rendered diagram |
+| Ease | Beginner-friendly | Developer-friendly |
+| Works Offline | ✅ Yes | ⚠️ Needs Markdown preview |
+| Good for | Architecture, workflows, UI maps | Readme diagrams, pipelines |
+| Color/Style Customization | 🎨 Full control | 🧩 Limited but clean |
+
+---
+
+### 💡 For Your Project
+✅ Use **Draw.io** to make:
+- “System Architecture” diagram (color-coded boxes)  
+- “Workflow” diagram (module-wise flow)  
+
+✅ Use **Mermaid** (optional) to embed:
+- A smaller version of these diagrams directly in your `README.md`.
+
+---
+
+Would you like me to show you **step-by-step how to open Draw.io and make your FWI Predictor workflow diagram** (with the same color blocks as your example)?
